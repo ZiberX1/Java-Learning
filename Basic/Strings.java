@@ -44,5 +44,7 @@ public class Strings {
 
         String text2 = "Hello Lucas \t (friend).\nHow are you?";
         System.out.println(text2);
+        // Output: Hello Lucas   (friend).
+        // Output: How are you?
     }
 }
