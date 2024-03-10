@@ -7,12 +7,9 @@ public class Monster {
 
     Monster() {
         System.out.println("Creating monster.");
-    }
-
-    Monster(String name, int hp, int atk) {
-        this.name = name;
-        this.hp = hp;
-        this.atk = atk;
+        this.name = "Monster";
+        this.hp = 5;
+        this.atk = 1;
     }
 
     public void displayInfo() {
@@ -29,5 +26,11 @@ public class Monster {
 
     public int getATK() {
         return this.atk;
+    }
+
+    protected void setInfo(String name, int hp, int atk) {
+        this.name = name;
+        this.hp = hp;
+        this.atk = atk;
     }
 }
