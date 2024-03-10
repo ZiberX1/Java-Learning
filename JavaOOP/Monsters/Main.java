@@ -10,6 +10,16 @@ public class Main {
 
         Goblin goblin1 = new Goblin();
         goblin1.displayInfo();
+
+        Goblin goblinBoss1 = new Goblin("Boss");
+        goblinBoss1.displayInfo();
+
+        Goblin goblinEpic1 = new Goblin("Epic");
+        goblinEpic1.displayInfo();
+
+        Goblin testGoblin = new Goblin("Haha");
+        testGoblin.displayInfo();
         
+
     }
 }
