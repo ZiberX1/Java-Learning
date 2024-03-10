@@ -16,9 +16,6 @@ public class Main {
 
         Goblin goblinEpic1 = new Goblin("Epic");
         goblinEpic1.displayInfo();
-
-        Goblin testGoblin = new Goblin("Haha");
-        testGoblin.displayInfo();
         
 
     }
