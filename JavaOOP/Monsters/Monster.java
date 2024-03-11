@@ -1,5 +1,3 @@
-package JavaOOP.Monsters;
-
 public class Monster implements SkillsMonsters {
     private String name;
     private int hp;

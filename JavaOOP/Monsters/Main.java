@@ -1,5 +1,3 @@
-package JavaOOP.Monsters;
-
 public class Main {
     public static void main(String[] args) {
         Monster mon1 = new Monster();

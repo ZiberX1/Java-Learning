@@ -1,5 +1,3 @@
-package JavaOOP.Monsters;
-
 public class Goblin extends Monster {
     private int goblinHP = 15;
     private float goblinATK = 3;
