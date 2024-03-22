@@ -13,9 +13,18 @@ public class ReverseString {
 */
         
         Scanner input = new Scanner(System.in);
+
         System.out.print("Enter text : ");
+        // รับค่า input
         String text = input.nextLine();
+        input.close();
+
         System.out.println("Reverse is : " + reverseString(text));
+        // Output:
+        /*      
+            Enter text : Hello world. 
+            Reverse is : .dlrow olleH 
+        */
     }
 
     public static String reverseString(String text) {
