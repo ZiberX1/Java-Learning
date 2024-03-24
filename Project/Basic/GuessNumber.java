@@ -48,7 +48,6 @@ public class GuessNumber {
             line(30);
             
             if (i == chances) {
-                line(30);
                 System.out.println("You lose");
                 System.out.println("The answer is " + number);
                 break;
