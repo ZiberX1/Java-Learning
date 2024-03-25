@@ -3,106 +3,112 @@ import java.util.Random;
 
 public class Bank {
 
+    // ชื่อธนาคาร
     private String name;
 
+    // list data > users account
     private ArrayList<User> users;
 
     private ArrayList<Account> accounts;
 
-    // Create a new Bank with empty data
+    public String generateUserID() {
+
+        String uuid;
+        int len = 6;
+        Random random = new Random();
+        boolean nonUnique;
+
+        do {
+            
+            uuid = "";
+            // สุ่มเลข 0-9 : len ครั้ง
+            for (int i = 0; i < len; i++) {
+                uuid += (Integer)random.nextInt(10);
+            }
+
+            // check ซ้ำ
+            nonUnique = false;
+            for (User theUser : users) {
+                if (uuid.equals(theUser.getUUID())) {
+                    nonUnique = true;
+                    break;
+                }
+            }
+        } while (nonUnique); // loop จนกว่าจะได้ uuid
+
+
+        return uuid;
+    }
+
+    public String generateAccountID() {
+
+        String uuid;
+        int len = 10;
+        Random random = new Random();
+        boolean nonUnique;
+
+        do {
+            
+            uuid = "";
+            // สุ่มเลข 0-9 : len ครั้ง
+            for (int i = 0; i < len; i++) {
+                uuid += (Integer)random.nextInt(10);
+            }
+
+            // check ซ้ำ
+            nonUnique = false;
+            for (Account theAccount : accounts) {
+                if (uuid.equals(theAccount.getUUID())) {
+                    nonUnique = true;
+                    break;
+                }
+            }
+        } while (nonUnique); // loop จนกว่าจะได้ uuid
+
+
+        return uuid;
+    }
+
+    public void addAccount(Account anAccount) {
+        this.accounts.add(anAccount);
+    }
+
     public Bank(String name) {
+
         this.name = name;
+
+        // data list
         this.users = new ArrayList<User>();
         this.accounts = new ArrayList<Account>();
     }
 
-    public String getNewUserUUID() {
-        // inits
-        String uuid;
-        Random rd = new Random();
-        int len = 6;
-        boolean nonUnique;
+    // create user
+    public User addUser(String firstName, String lastName, String pin) {
 
-        // loop จนกว่าจะได้ uuid
-        do {
-            // generate number
-            uuid = "";
-            for (int i = 0; i < len; i++) {
-                uuid += (Integer)rd.nextInt(10);
-            }
-
-            // check in bank
-            nonUnique = false;
-            for (User u : users) {
-                if (uuid.compareTo(u.getUUID()) == 0) {
-                    nonUnique = true;
-                    break;
-                }
-            }
-        } while (nonUnique);
-
-        return uuid;
-    }
-
-    public String getNewAccountUUID() {
-        // inits
-        String uuid;
-        Random rd = new Random();
-        int len = 10;
-        boolean nonUnique;
-
-        // loop จนกว่าจะได้ uuid
-        do {
-            // generate number
-            uuid = "";
-            for (int i = 0; i < len; i++) {
-                uuid += (Integer)rd.nextInt(10);
-            }
-
-            // check in bank
-            nonUnique = false;
-            for (Account a : accounts) {
-                if (uuid.compareTo(a.getUUID()) == 0) {
-                    nonUnique = true;
-                    break;
-                }
-            }
-        } while (nonUnique);
-
-        return uuid;
-    }
-    
-    public void addAccount(Account onAccount) {
-        this.accounts.add(onAccount);
-    }
-
-    // Create user
-    public User addUser(String firstname, String lastname, String pin) {
-
-        // create a new User object and add to list
-        User newUser = new User(firstname, lastname, pin, this);
+        User newUser = new User(firstName, lastName, pin, this);
+        // save new user to list
         this.users.add(newUser);
-
-        // create a saving account and add to list
+        
+        // create account saving
         Account newAccount = new Account("Saving", newUser, this);
         newUser.addAccount(newAccount);
         this.addAccount(newAccount);
-        
 
         return newUser;
     }
 
-    public User userLogin(String userID, String pin) {
+    // login
+    public User userLogin(String userID, String aPin) {
 
-        for (User u : users) {
+        for (User theUser : users) {
             
-            // if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
-            if (u.getUUID().equals(userID) && u.validatePin(pin)) {
-                return u;
+            // เช็ค user id and pin
+            if (theUser.getUUID().equals(userID) && theUser.validatePin(aPin)) {
+                return theUser;
             }
         }
 
-        // ถ้าไม่พบ user จะ return null
+        // หากไม่พบ user หรือ pin ไม่ถูกต้อง
         return null;
     }
 
