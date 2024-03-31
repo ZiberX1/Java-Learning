@@ -90,8 +90,8 @@ public class GameLogic {
 
     public static void battleInfo(Goblin enemy) {
         printSeperator(50);
-        System.out.println(String.format("[%s] HP: %.01f / %.01f \t ATK: %.01f", player.getName(), player.getHP(), player.getHP(), player.getATK()));
-        System.out.println(String.format("[%s] HP: %.01f / %.01f \t ATK: %.01f", enemy.getName(), enemy.getHP(), enemy.getHP(), enemy.getATK()));
+        System.out.println(String.format("[%s] HP: %.01f / %.01f \t ATK: %.01f", player.getName(), player.getHP(), player.getMaxHP(), player.getATK()));
+        System.out.println(String.format("[%s] HP: %.01f / %.01f \t ATK: %.01f", enemy.getName(), enemy.getHP(), enemy.getMaxHP(), enemy.getATK()));
         printSeperator(50);
     }
 
